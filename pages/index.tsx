@@ -1,4 +1,7 @@
-import Head from 'next/head'
+import Head from "next/head";
+import TodoProvider from "@/context/todoContext";
+import TodosList from "@/components/TodoList";
+import TodoField from "@/components/TodoField";
 
 export default function Home() {
   return (
@@ -9,9 +12,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        
-      </main>
+      <TodoProvider>
+        <main className="bg-gray-400 mb-0 pb-3 px-44">
+          <TodoField />
+          <TodosList />
+        </main>
+      </TodoProvider>
     </>
-  )
+  );
 }
