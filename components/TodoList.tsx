@@ -4,7 +4,7 @@ import { TodoContext } from "@/context/todoContext";
 import Todo from "@/components/TodoCard";
 
 const TodoList = () => {
-  const { todos, updateTodo, removeTodo, fetchTodo, refreshTodo } =
+  const { todos, updateTodo, removeTodo, fetchTodo, refreshTodo, updateCheckTodo } =
     React.useContext(TodoContext) as TodoContextType;
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const TodoList = () => {
         <Todo
           key={todo.id}
           updateTodo={updateTodo}
+          updateCheckTodo={updateCheckTodo}
           todo={todo}
           removeTodo={removeTodo}
           refreshTodo={refreshTodo}

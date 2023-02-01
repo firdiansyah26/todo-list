@@ -15,6 +15,9 @@ const API = () => {
     async updateData(id: number, data: Object) {
       return await instance.put("/todos/" + id, { data });
     },
+    async updateCheck(id: number, data: Object) {
+      return await instance.patch("/todos/" + id, { data });
+    },
     async removeData(id: number) {
       return await instance.delete("/todos/" + id);
     },

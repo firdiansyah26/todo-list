@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { ITodo } from "@/type/todo";
-import service from "@/services/todolist.service";
 
 type Props = {
   todo: ITodo;
   updateTodo: (todo: ITodo) => void;
+  updateCheckTodo: (todo: ITodo) => void;
   removeTodo: (id: number) => void;
   refreshTodo: (todo: ITodo) => void;
 };
@@ -12,6 +12,7 @@ type Props = {
 const TodoCard: React.FunctionComponent<Props> = ({
   todo,
   updateTodo,
+  updateCheckTodo,
   removeTodo,
   refreshTodo,
 }) => {
@@ -19,7 +20,7 @@ const TodoCard: React.FunctionComponent<Props> = ({
   const [todos, setTodos] = useState(todo.todo);
   const [completed, setCompleted] = useState(todo.completed);
 
-  async function onEdit(field: string, value: any) {
+  function onEdit(field: string, value: any) {
     const body = {
       ...todo,
       [field]: value,
@@ -27,10 +28,14 @@ const TodoCard: React.FunctionComponent<Props> = ({
 
     refreshTodo(body);
 
-    if (field === "completed") setCompleted(value);
-    else setTodos(value);
+    if (field === "completed") {
+      setCompleted(value);
+      updateCheckTodo(body);
+    } else {
+      setTodos(value);
+      updateTodo(body);
+    }
 
-    updateTodo(body)
     setIsEdit(false);
   }
 
