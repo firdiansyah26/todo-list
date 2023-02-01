@@ -1,5 +1,4 @@
-// context/todoContext.tsx
-import * as React from "react";
+import React from "react";
 import { TodoContextType, ITodo } from "@/type/todo";
 import service from "@/services/todolist.service";
 
