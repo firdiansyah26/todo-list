@@ -33,6 +33,14 @@ const TodoProvider: React.FC<React.ReactNode> = (props: any) => {
     await service().updateData(todo.id, todo);
   };
 
+  const updateCheckTodo = async (todo: ITodo) => {
+    const findIndex = todos.findIndex((x) => x.id === todo.id);
+    todos[findIndex] = todo;
+    setTodos(todos);
+
+    await service().updateCheck(todo.id, todo);
+  };
+
   const removeTodo = async (id: number) => {
     await service().removeData(id);
 
@@ -46,6 +54,7 @@ const TodoProvider: React.FC<React.ReactNode> = (props: any) => {
         todos,
         saveTodo,
         updateTodo,
+        updateCheckTodo,
         removeTodo,
         fetchTodo,
         refreshTodo,

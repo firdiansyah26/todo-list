@@ -9,5 +9,6 @@ export type TodoContextType = {
   refreshTodo: (todo: ITodo) => void;
   saveTodo: (todo: ITodo) => void;
   updateTodo: (todo: ITodo) => void;
+  updateCheckTodo: (todo: ITodo) => void;
   removeTodo: (id: number) => void;
 };
